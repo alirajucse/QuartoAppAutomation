@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Contact Us Suite" verbose="1">
+    <listeners>
+        <listener class-name="Base.TestListener" />
+    </listeners>
+    <parameter name="browserType" value="chrome" />
+    <parameter name="appURL" value="https://quartolab.com/" />
+
+    <test name="Contact Us Tests">
+        <groups>
+            <run>
+                <include name = "smoke" />
+            </run>
+        </groups>
+        <classes>
+            <class name="Tests.ContactUsPageTest" />
+            <parameter name="name" value="Ali"></parameter>
+            <parameter name="email" value="ali@getnada.com"></parameter>
+            <parameter name="companyName" value="ABC"></parameter>
+            <parameter name="phone" value="01234567490"></parameter>
+            <parameter name="message" value="Test message"></parameter>
+        </classes>
+    </test>
+</suite>

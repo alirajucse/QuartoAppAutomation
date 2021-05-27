@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Home Suite" verbose="1">
+    <listeners>
+        <listener class-name="Base.TestListener" />
+    </listeners>
+    <parameter name="browserType" value="chrome" />
+    <parameter name="appURL" value="https://quartolab.com/" />
+
+    <test name="Home page Tests">
+        <groups>
+            <run>
+                <include name = "smoke" />
+            </run>
+        </groups>
+        <classes>
+            <class name="Tests.HomePageTest" />
+        </classes>
+    </test>
+</suite>
