@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HomePage {
@@ -25,14 +27,16 @@ public class HomePage {
     }
 
     public void landHomePageVerify() throws InterruptedException {
-        Thread.sleep(15000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((acceptCookiesButton)));
         driver.findElement(acceptCookiesButton).click();
         String expectedPageTitle = "Quarto";
         String title= driver.getTitle();
         Assert.assertEquals(title,expectedPageTitle);
     }
     public void clickFeaturesMenuItem() throws InterruptedException {
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((featuresMenuItemLink)));
         driver.findElement(featuresMenuItemLink).click();
         if(driver.findElement(employeePageVerifyElement).isDisplayed()){
             System.out.println("Test case passed");
@@ -43,11 +47,13 @@ public class HomePage {
         }
     }
     public void clickIndustriesMenuItem() throws InterruptedException {
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((industiesMenuItem)));
         driver.findElement(industiesMenuItem).click();
     }
     public void clickPricingMenuItem() throws InterruptedException {
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((pricingMenuItemLink)));
         driver.findElement(pricingMenuItemLink).click();
         if(driver.findElement(pricingPageVerifyElement).isDisplayed()){
             System.out.println("Test case passed");
@@ -59,7 +65,8 @@ public class HomePage {
     }
     public void clickBlogMenuItem() throws InterruptedException {
         String blogPagerTitle="Blog | Quartolab – Most advanced enterprise knowledge management system exclusively designed for the construction and development industry";
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((blogMenuItemLink)));
         driver.findElement(blogMenuItemLink).click();
         String winHandleBefore = driver.getWindowHandle();
         // Switch to new window opened
@@ -70,9 +77,10 @@ public class HomePage {
         driver.switchTo().window(winHandleBefore);
     }
     public void clickLogInMenuItem() throws InterruptedException {
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((signInButton)));
         driver.findElement(signInButton).click();
-        Thread.sleep(5000);
+        wait.until(ExpectedConditions.presenceOfElementLocated((signInPageVerifyElement)));
         if(driver.findElement(signInPageVerifyElement).isDisplayed()){
             System.out.println("Test case passed");
         }
@@ -82,7 +90,8 @@ public class HomePage {
         }
     }
     public void contactUs() throws InterruptedException {
-        Thread.sleep(15000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((contactUsButton)));
         driver.findElement(contactUsButton).click();
     }
 }

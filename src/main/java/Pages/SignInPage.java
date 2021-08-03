@@ -2,6 +2,8 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignInPage {
     private WebDriver driver;
@@ -13,10 +15,11 @@ public class SignInPage {
     }
     public void SignInWithInvalidCredentials(String email) throws InterruptedException {
         By errorMessageElement= By.xpath("//div[@class='invalid-feedback']");
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((emailTextbox)));
         driver.findElement(emailTextbox).sendKeys(email);
         driver.findElement(nextButton).click();
-        Thread.sleep(10000);
+        wait.until(ExpectedConditions.presenceOfElementLocated((errorMessageElement)));
         driver.findElement(errorMessageElement).isDisplayed();
     }
 }

@@ -23,7 +23,6 @@ public class ContactUsPageTest extends TestBase {
     @Parameters({ "name","email", "companyName","phone","message" })
     @Test(priority = 1,groups = { "smoke" })
     public void ContactUsFormTest(String name,String email,String companyName,String phone,String message) throws InterruptedException {
-
         homePage.contactUs();
         contactUsPage.submitContactUsForm(name,email,companyName,phone,message);
         contactUsPage.successfulSubmissionVerify();

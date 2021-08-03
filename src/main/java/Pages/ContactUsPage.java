@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.awt.*;
 
 public class ContactUsPage {
@@ -20,7 +23,8 @@ public class ContactUsPage {
         this.driver=driver;
     }
     public void submitContactUsForm(String name,String email,String companyName,String phone,String message) throws InterruptedException {
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((nameTextbox)));
         driver.findElement(nameTextbox).sendKeys(name);
         driver.findElement(emailTextbox).sendKeys(email);
         driver.findElement(companyNameTextbox).sendKeys(companyName);
@@ -29,7 +33,8 @@ public class ContactUsPage {
         driver.findElement(submitButton).click();
     }
     public void successfulSubmissionVerify() throws InterruptedException {
-        Thread.sleep(10000);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated((successfulFormSubmitVerifyElement)));
         driver.findElement(successfulFormSubmitVerifyElement).isDisplayed();
     }
 }
